@@ -27,14 +27,6 @@ function MedicineList() {
                 <Badge pill bg="light" text="dark">tl</Badge> </td>  
               </tr>  
             ))} 
-     {/* { data.forEach(element => {
-        <tr>
-          <td>{counter+1}</td>
-          <td>{element.medicineName}</td>
-          <td>{element.stock}</td>
-          <td>{element.price}</td>
-        </tr>
-         })} */}
     </tbody>
   </Table>
   <Popup/>
