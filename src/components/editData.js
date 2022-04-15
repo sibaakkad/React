@@ -1,45 +1,51 @@
-import { Modal } from 'react-bootstrap';
-import { Button } from 'react-bootstrap';
-import { Form } from 'react-bootstrap';
-import { useState } from "react";
-import { useContext } from 'react';
-import   arrayContext   from '../context/arrayContext';
+import { Modal, Button, Form } from 'react-bootstrap';
+import { useState, useContext } from "react";
+import arrayContext from '../context/arrayContext';
 
 
-function Popup() {
-  //const [data, setData] = useContext(arrayContext);
-  const data= useContext(arrayContext);
+function EditData({ dataParentToChild }) {
+
+  const { data, setData } = useContext(arrayContext);
+
   const [name, setName] = useState("");
   const [stock, setStock] = useState(0);
   const [price, setPrice] = useState(0);
-  
+
 
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  console.log(data)
-  const submit = function(){
-    let tempObject = { medicineName: name, stock: stock, price: price};
-    var lastIndex = Object.keys(data)[Object.keys(data).length-1];
-    data[parseInt(lastIndex) +1] = { medicineName: name, stock: stock, price: price}; 
-    //setData(data)
-    console.log(data)
-    setShow(false)
+
+  const defaultValue = function () {
+    setName(data[dataParentToChild].medicineName);
+    setStock(data[dataParentToChild].stock);
+    setPrice(data[dataParentToChild].price);
+    handleShow()
+  };
+
+  const submit = function () {
+    data[dataParentToChild] = { medicineName: name, stock: stock, price: price };
+    let t = [];
+    data.forEach(element => {
+      t.push(element);
+    });
+    setData(t);
+
+    setShow(false);
   };
   return (
     <div>
       <>
-        <Button variant="dark" onClick={handleShow}>
-          Add Medicine
+        <Button variant="success" onClick={defaultValue}>
+          Update Data
         </Button>
-
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>Drug information</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <Form>
+            <Form >
               <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                 <Form.Label>Name Of The Medicine:</Form.Label>
                 <Form.Control value={name} onChange={(e) => setName(e.target.value)}
@@ -49,14 +55,14 @@ function Popup() {
               </Form.Group>
               <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                 <Form.Label>Stock In Pharmacy:</Form.Label>
-                <Form.Control value={stock} onChange={(e) => setStock(e.target.value)} type="number"
+                <Form.Control value={stock} onChange={(e) => setStock(e.target.value)} type="number" min="0"
                   placeholder=""
                   autoFocus
                 />
               </Form.Group>
               <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                 <Form.Label>Price:</Form.Label>
-                <Form.Control value={price} onChange={(e) => setPrice(e.target.value)} type="number"
+                <Form.Control value={price} onChange={(e) => setPrice(e.target.value)} type="number" min="0"
                   placeholder=""
                   autoFocus
                 />
@@ -76,4 +82,4 @@ function Popup() {
     </div>
   );
 }
-export default Popup;
+export default EditData;

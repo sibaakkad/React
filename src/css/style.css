@@ -1,0 +1,17 @@
+.list-continer {
+  margin: 0px 100px;
+  text-align: center;
+}
+
+.list-continer h1 {
+  margin: 20px;
+}
+
+.list-continer Table {
+  margin: 20px 0px;
+}
+
+.add Button {
+  width: 40%;
+  margin-top: 10px;
+}
