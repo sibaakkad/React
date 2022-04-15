@@ -1,11 +1,13 @@
 import { Table } from 'react-bootstrap';
 import { Badge } from 'react-bootstrap';
-import arrayContext from '../context/arrayContext';
+import  arrayContext   from '../context/arrayContext';
 import {useContext} from 'react'
 import Popup from './Popup';
+import { useState } from "react";
 
 function MedicineList() {
   const data = useContext(arrayContext);
+  // const [Data, setData] = useState(data);
   return (   
     <div>
     <Table striped bordered hover>
@@ -29,7 +31,7 @@ function MedicineList() {
             ))} 
     </tbody>
   </Table>
-  <Popup/>
+  <Popup />
   </div>
   );
 }

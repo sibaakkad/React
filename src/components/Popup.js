@@ -3,19 +3,30 @@ import { Button } from 'react-bootstrap';
 import { Form } from 'react-bootstrap';
 import { useState } from "react";
 import { useContext } from 'react';
-import arrayContext from '../context/arrayContext';
+import   arrayContext   from '../context/arrayContext';
 
 
 function Popup() {
-  const data = useContext(arrayContext);
+  //const [data, setData] = useContext(arrayContext);
+  const data= useContext(arrayContext);
   const [name, setName] = useState("");
-  const [stock, setStock] = useState("");
-  const [price, setPrice] = useState("");
+  const [stock, setStock] = useState(0);
+  const [price, setPrice] = useState(0);
+  
 
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  console.log(data)
+  const submit = function(){
+    let tempObject = { medicineName: name, stock: stock, price: price};
+    var lastIndex = Object.keys(data)[Object.keys(data).length-1];
+    data[parseInt(lastIndex) +1] = { medicineName: name, stock: stock, price: price}; 
+    //setData(data)
+    console.log(data)
+    setShow(false)
+  };
   return (
     <div>
       <>
@@ -56,7 +67,7 @@ function Popup() {
             <Button variant="secondary" onClick={handleClose}>
               Close
             </Button>
-            <Button variant="success" onClick={handleClose}>
+            <Button variant="success" onClick={submit}>
               Save Changes
             </Button>
           </Modal.Footer>
