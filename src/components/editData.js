@@ -26,12 +26,7 @@ function EditData({ dataParentToChild }) {
 
   const submit = function () {
     data[dataParentToChild] = { medicineName: name, stock: stock, price: price };
-    let t = [];
-    data.forEach(element => {
-      t.push(element);
-    });
-    setData(t);
-
+    setData(data => [...data]);
     setShow(false);
   };
   return (

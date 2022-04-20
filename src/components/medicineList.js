@@ -5,6 +5,7 @@ import EditData from './editData';
 import DeleteData from './deleteData';
 import sortFunction from '../context/sort';
 import AddData from './addData';
+import SearchData from './search';
 import '../css/style.css';
 
 function MedicineList() {
@@ -13,6 +14,7 @@ function MedicineList() {
   return (
     <div class="list-continer">
       <h1>Stock System</h1>
+      <SearchData />
       <Table striped bordered hover >
         <thead>
           <tr>

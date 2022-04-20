@@ -4,8 +4,8 @@ import arrayContext from '../context/arrayContext';
 import '../css/style.css';
 
 function AddData() {
-  const { data, setData } = useContext(arrayContext);
 
+  const { data, setData } = useContext(arrayContext);
   const [name, setName] = useState("");
   const [stock, setStock] = useState(0);
   const [price, setPrice] = useState(0);
@@ -18,12 +18,14 @@ function AddData() {
 
   const submit = function () {
     let tempObject = { medicineName: name, stock: stock, price: price };
-    let t = [];
-    data.push(tempObject);
-    data.forEach(element => {
-      t.push(element);
-    });
-    setData(t);
+    //let t = [];
+    //data.push(tempObject);
+    //setData(data)
+    // data.forEach(element => {
+    //   t.push(element);
+    // });
+    // setData(t);
+    setData(data => [...data, tempObject]);
     setShow(false);
     setName("");
     setStock(0);
@@ -69,7 +71,7 @@ function AddData() {
             <Button variant="secondary" onClick={handleClose}>
               Close
             </Button>
-            <Button variant="success" onClick={submit}>
+            <Button variant="success" type="button" onClick={submit}>
               Save Changes
             </Button>
           </Modal.Footer>
