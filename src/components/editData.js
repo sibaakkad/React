@@ -27,7 +27,7 @@ function EditData({ dataParentToChild }) {
   const submit = function () {
     data[dataParentToChild] = { medicineName: name, stock: stock, price: price };
     setData(data => [...data]);
-    setTempArray(data => [...data]);
+    setTempArray(data);
     setShow(false);
   };
   return (
