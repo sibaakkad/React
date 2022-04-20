@@ -27,6 +27,7 @@ function AddData() {
     // setData(t);
     setData(data => [...data, tempObject]);
     setTempArray(data => [...data, tempObject]);
+    debugger
     setShow(false);
     setName("");
     setStock(0);
