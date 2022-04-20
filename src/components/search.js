@@ -3,7 +3,7 @@ import { useState, useContext, useEffect } from "react";
 import arrayContext from '../context/arrayContext';
 
 function SearchData() {
-  const { setData, arrayOfObjects } = useContext(arrayContext);
+  const {data, setData,  tempArray, setTempArray } = useContext(arrayContext);
   const [name, setName] = useState("");
 
   useEffect(() => {
@@ -12,10 +12,10 @@ function SearchData() {
 
   const search = function () {
     if (name === "") {
-      setData(arrayOfObjects);
+      setData(tempArray);
     } else {
-      var result = arrayOfObjects.filter(element => element.medicineName.toLowerCase().includes(name.toLowerCase()))
-      setData(result)
+      var result = tempArray.filter(element => element.medicineName.toLowerCase().includes(name.toLowerCase()))
+      setData(result);
     }
   };
   return (

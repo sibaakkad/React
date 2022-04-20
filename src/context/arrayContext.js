@@ -9,15 +9,16 @@ const arrayOfObjects = [
 ];
 export const ArrayProvider = ({ children }) => {
   const [data, setData] = useState(arrayOfObjects);
-
+  const [tempArray, setTempArray] = useState(arrayOfObjects);
   const values = {
     data,
     setData,
-    arrayOfObjects,
+    tempArray,
+    setTempArray,
   };
   return (<div>
-    <arrayContext.Provider value={values}>{children} </arrayContext.Provider>
-  </div>
+          <arrayContext.Provider value={values}>{children} </arrayContext.Provider>         
+          </div>
   )
 };
 export default arrayContext;

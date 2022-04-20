@@ -5,7 +5,7 @@ import arrayContext from '../context/arrayContext';
 
 function EditData({ dataParentToChild }) {
 
-  const { data, setData } = useContext(arrayContext);
+  const { data, setData ,setTempArray} = useContext(arrayContext);
 
   const [name, setName] = useState("");
   const [stock, setStock] = useState(0);
@@ -27,6 +27,7 @@ function EditData({ dataParentToChild }) {
   const submit = function () {
     data[dataParentToChild] = { medicineName: name, stock: stock, price: price };
     setData(data => [...data]);
+    setTempArray(data => [...data]);
     setShow(false);
   };
   return (

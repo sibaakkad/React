@@ -5,7 +5,7 @@ import '../css/style.css';
 
 function AddData() {
 
-  const { data, setData } = useContext(arrayContext);
+  const { data, setData ,setTempArray } = useContext(arrayContext);
   const [name, setName] = useState("");
   const [stock, setStock] = useState(0);
   const [price, setPrice] = useState(0);
@@ -26,6 +26,7 @@ function AddData() {
     // });
     // setData(t);
     setData(data => [...data, tempObject]);
+    setTempArray(data => [...data, tempObject]);
     setShow(false);
     setName("");
     setStock(0);
