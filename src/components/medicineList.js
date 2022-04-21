@@ -32,8 +32,8 @@ function MedicineList() {
               <td>{element.stock}</td>
               <td>{element.price}
                 <span> &#8378;</span> </td>
-              <td ><EditData dataParentToChild={index} /></td>
-              <td><DeleteData dataParentToChild={index} /></td>
+              <td ><EditData dataParentToChild={element.id} /></td>
+              <td><DeleteData dataParentToChild={element.id} /></td>
             </tr>
           ))}
         </tbody>

@@ -5,7 +5,7 @@ import '../css/style.css';
 
 function AddData() {
 
-  const { data, setData ,setTempArray } = useContext(arrayContext);
+  const { data, setData, setTempArray } = useContext(arrayContext);
   const [name, setName] = useState("");
   const [stock, setStock] = useState(0);
   const [price, setPrice] = useState(0);
@@ -16,18 +16,13 @@ function AddData() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  let generateId = Math.floor((1 + Math.random()) * 0x10000)
+    .toString(16).substring(1);
+
   const submit = function () {
-    let tempObject = { medicineName: name, stock: stock, price: price };
-    //let t = [];
-    //data.push(tempObject);
-    //setData(data)
-    // data.forEach(element => {
-    //   t.push(element);
-    // });
-    // setData(t);
+    let tempObject = { id: generateId, medicineName: name, stock: stock, price: price };
     setData(data => [...data, tempObject]);
     setTempArray(data => [...data, tempObject]);
-    debugger
     setShow(false);
     setName("");
     setStock(0);

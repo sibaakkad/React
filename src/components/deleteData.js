@@ -1,9 +1,9 @@
 import { Modal, Button } from 'react-bootstrap';
-import { useState, useContext ,useEffect} from "react";
+import { useState, useContext } from "react";
 import arrayContext from '../context/arrayContext';
 
 function DeleteData({ dataParentToChild }) {
-  const { data, setData  ,tempArray, setTempArray} = useContext(arrayContext);
+  const { data, setData, tempArray, setTempArray } = useContext(arrayContext);
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -11,7 +11,7 @@ function DeleteData({ dataParentToChild }) {
 
 
   const submit = function () {
-    const newList = tempArray.filter((item, i) => i !== dataParentToChild);
+    const newList = tempArray.filter((item) => item.id !== dataParentToChild);
     setData(newList);
     setTempArray(newList);
     setShow(false);

@@ -6,12 +6,18 @@ function SearchData() {
   const {data, setData,  tempArray, setTempArray } = useContext(arrayContext);
   const [name, setName] = useState("");
 
+
   useEffect(() => {
     search();
   }, [name]);
 
+  useEffect(() => {
+    setName("");
+    console.log(tempArray)
+  }, [tempArray]);
+
   const search = function () {
-    if (name === "") {
+    if (name == "") {
       setData(tempArray);
     } else {
       var result = tempArray.filter(element => element.medicineName.toLowerCase().includes(name.toLowerCase()))
@@ -19,7 +25,7 @@ function SearchData() {
     }
   };
   return (
-    <div class="search">
+    <div class="search" >
       <Container fluid>
         <Form className="d-flex"  >
           <FormControl value={name} onChange={(e) => { setName(e.target.value) }}
